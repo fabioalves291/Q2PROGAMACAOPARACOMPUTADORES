@@ -172,7 +172,7 @@ while True:
             except TypeError:
                 pass
             except json.decoder.JSONDecodeError:
-                pass
+                print('criar log 175-linha')
 
             cont += 1
             
@@ -236,7 +236,7 @@ while True:
                                                         #if
                                         
                                         except json.decoder.JSONDecodeError:
-                                                pass
+                                                print('criar log linha 239')
             
                                     try:
                                         auxiliar_andamento += 1
@@ -256,6 +256,8 @@ while True:
                             #criar log()
                 
                 #input(dados)
+
+
                 #json.loads ele troca as " por ' . retire os comentarios para ver acima
             file.close()
     #       for regiao in regioes:
@@ -294,7 +296,7 @@ while True:
                                                         #if
                                         
                                         except json.decoder.JSONDecodeError:
-                                                pass
+                                                print('criar log')
             
                                     try:
                                         auxiliar_andamento += 1
