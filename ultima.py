@@ -13,6 +13,11 @@ def menu():
 se ja tiver o arquivo unico com todos os dados prescione " 2 "
 ''')
     return
+
+def criarlog(self):
+    filelog    =   open('log/log.txt','a')
+    filelog.write(self)
+    filelog.close()
     
 local = os.path.abspath('seriefinal')
 arquivo = 'seriefinal.txt'
@@ -39,7 +44,7 @@ while True:
             print('criando pasta seriefinal')
             os.mkdir('seriefinal')
         except FileExistsError:
-            print('pasta seriefinal ja existente')
+            print('pasta seriefinal já existente')
         try:
             os.mkdir('log')
         except FileExistsError:
@@ -91,7 +96,7 @@ while True:
                     bandeira['BANDEIRA'] = palavra
                         
                 except  IndexError:
-                    print('!!!!   criar um log   !!!!')
+                    print('criar um log - 94')
                     
                 #tive   colocar o raplace porque nao ficava com duas aspas 
                 bandeira = str(bandeira).replace("'",'"')
@@ -129,7 +134,9 @@ while True:
         print('lendo arquivo ja formatado e retirando dados...')
         cont = 0
         b = 100000
+        linha = 0
         for dados in file:
+            linha += 1
             try:
                 #input(dados)
                 dados = json.loads(dados)
@@ -170,10 +177,10 @@ while True:
                     regioes.append(dados['REGIAO'])
                     
             except TypeError:
-                pass
+                print('criar log 173-linha')
             except json.decoder.JSONDecodeError:
-                print('criar log 175-linha')
-
+                print('criar log 175-linha',linha,dados)
+                criarlog(f'{linha} json.decoder.JSONDecodeError\n{dados}')
             cont += 1
             
             if cont == b:
@@ -245,8 +252,8 @@ while True:
                                     except ZeroDivisionError:
                                         print(linha)    #criar log colocar linha no log
                                         logfile = open('log/log.txt','a')
-                                        logfile.write(f'')
-                                        pass
+                                        logfile.write(f'erro na linha {linha}')
+                                        
                                     print('')
                                     auxiliardevalor = float(0.0)
                                     quantidade_de_postos = 0
@@ -296,7 +303,7 @@ while True:
                                                         #if
                                         
                                         except json.decoder.JSONDecodeError:
-                                                print('criar log')
+                                                print('criar log 299-linha')
             
                                     try:
                                         auxiliar_andamento += 1
@@ -304,9 +311,8 @@ while True:
                                     except ZeroDivisionError:
                                         print(linha)    #criar log colocar linha no log
                                         logfile = open('log/log.txt','a')
-                                        logfile.write(f'zero adicionar o contador de linha')
-                                        pass
-                                    print('')
+                                        logfile.write(f'zero adicionar o contador de linha na linha {linha}')
+            
                                     auxiliardevalor = float(0.0)
                                     quantidade_de_postos = 0
                                         
